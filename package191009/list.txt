@@ -1,0 +1,20 @@
+1.类的继承与调用
+2.len() 与 转义字符
+3.setattr() 与 getattr()为对象<设置/获取>属性值 
+4.__name__ + __main__ + python -m/-u
+5.sys.path
+6.网络编程(服务端)
+7.网络编程(客户端)
+8.encode + decode
+9.多线程
+10.解数独
+11.SMTP发送邮件
+12.XML 解析
+13.日期(calendar)+时间(time)+datetime
+14.MYSQL
+15.抢票
+16.numpy
+17.
+18.
+19.
+20.
