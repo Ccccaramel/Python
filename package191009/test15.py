@@ -2,8 +2,8 @@
 from splinter.browser import Browser
 from time import sleep
 import traceback  # traceback 模块被用来跟踪异常返回信息
-username = u"15971366760"
-passwd = u"20051109nl"  # bie wang le o
+username = u""
+passwd = u""  # bie wang le o
 """
 起始点和乘车时间的 cookies 值在 Application 选项里找
 表格中 cookie 的值:
@@ -19,7 +19,7 @@ from_station = u"%u6DF1%u5733%2CSZQ"
 to_station = u"%u8572%u6625%2CQRN"
 from_date = u"2019-11-01"  # 时间格式 1996-05-08
 order = 0  # 车次,选择第几趟, 0 则从上至下依次点击
-ticketer = u"丁坦华"  # 设置乘车人姓名
+ticketer = u""  # 设置乘车人姓名
 
 # 设定网址
 ticket_url = "https://kyfw.12306.cn/otn/leftTicket/init"  # 选票界面
