@@ -1,4 +1,4 @@
-# 输出"Hello World"123
+# 输出"Hello World"1
 from splinter.browser import Browser
 from time import sleep
 import traceback  # traceback 模块被用来跟踪异常返回信息
