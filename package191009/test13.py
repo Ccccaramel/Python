@@ -13,8 +13,10 @@ datetime 提供用于操作日期和时间的类,重点是针对输出格式和�
 UNIX 和 Windows 只支持 1970 年至 2038 年
 """
 import time
-ticks = time.time()
-print("当前时间戳: {}".format(ticks))
+# while 1:
+#     ticks = time.time()
+#     print("当前时间戳: {}".format(ticks))
+#     time.sleep(1)
 
 # 时间元组
 """
