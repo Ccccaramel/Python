@@ -1,2 +1,2 @@
-# numpy
-import numpy as np
+# 0.1+0.2=?
+print("0.1 加 0.2 等于 0.3") if (0.1 + 0.2) == 0.3 else print("0.1 加 0.2 不等于 0.3 , 正确结果:{}".format(0.1+0.2))

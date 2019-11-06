@@ -13,7 +13,7 @@
 13.日期(calendar)+时间(time)+datetime
 14.MYSQL
 15.抢票
-16.numpy
+16.0.1+0.2=?
 17.
 18.
 19.
