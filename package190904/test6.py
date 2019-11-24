@@ -49,3 +49,15 @@ e         数学常量 e，e即自然常数（自然常数）
 """
 import math
 print("pi:{}".format(math.pi))
+
+# 进制转换
+"""
+二进制以 0b 开头
+八进制以 0o 开头
+十六进制以 0x 开头
+"""
+num1 = 13
+print("num1的十进制:{}".format((num1)))
+print("num1的二进制:{}".format(bin(num1)))
+print("num1的八进制:{}".format(oct(num1)))
+print("num1的十六进制:{}".format(hex(num1)))
