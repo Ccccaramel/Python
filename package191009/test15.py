@@ -78,6 +78,7 @@ def login():
 
 def getTickt():  # 购票
     global bwr
+    global bwr
     bwr = Browser(driver_name="chrome")  # 使用 splinter 打开 chrome 浏览器
     bwr.visit(ticket_url)  # splinter 打开浏览器(返回购票页面)
     while bwr.is_text_present(u"登录"):
