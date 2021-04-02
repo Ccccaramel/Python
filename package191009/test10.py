@@ -315,9 +315,7 @@ class square:
     def three_dimensional(self):
         for num in range(10):
             for lis in self.coordinate[num]:  # 从值为 0-9 的依次遍历,每次获取对应值的准确坐标
-
-
-def main():
+    def main():
     # 前期
     squ = square()  # 创建一个"数独方格"对象
     squ.ergodic()  # 查看数独副本,更新数独复杂度
