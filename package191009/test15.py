@@ -4,7 +4,7 @@ from splinter.browser import Browser
 from time import sleep
 import traceback  # traceback 模块被用来跟踪异常返回信息
 username = u"15971366760"
-passwd = u"20051109nl"  # bie wang le o
+passwd = u""
 """
 起始点和乘车时间的 cookies 值在 Application 选项里找
 表格中 cookie 的值:
