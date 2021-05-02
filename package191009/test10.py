@@ -34,6 +34,8 @@ Step 4
 #             print("! 请输入有效数字(0-9,0:待解空格)")
 #             get_number(horizontal, vertical, hor, ver)
 import copy
+
+
 # 逐行获取待解数独数据
 def get_a_set_of_data(line):
     s = input("请输入待解数独的第{}行数字:".format(line))
@@ -55,9 +57,9 @@ class square:
         # ]
 
         self.unit = [
-            [[[0, 7, 0], [0, 9, 8], [6, 3, 0]],  [[3, 9, 4], [1, 0, 0], [8, 0, 7]],  [[1, 6, 8], [0, 5, 0], [0, 0, 0]]],
-            [[[3, 0, 6], [0, 8, 9], [2, 4, 7]],  [[2, 4, 8], [6, 0, 3], [0, 1, 0]],  [[9, 1, 7], [2, 4, 0], [8, 0, 6]]],
-            [[[7, 0, 0], [9, 2, 3], [0, 0, 0]],  [[5, 8, 0], [7, 6, 1], [4, 3, 2]],  [[0, 2, 0], [5, 0, 4], [6, 7, 9]]]
+            [[[0, 7, 0], [0, 9, 8], [6, 3, 0]], [[3, 9, 4], [1, 0, 0], [8, 0, 7]], [[1, 6, 8], [0, 5, 0], [0, 0, 0]]],
+            [[[3, 0, 6], [0, 8, 9], [2, 4, 7]], [[2, 4, 8], [6, 0, 3], [0, 1, 0]], [[9, 1, 7], [2, 4, 0], [8, 0, 6]]],
+            [[[7, 0, 0], [9, 2, 3], [0, 0, 0]], [[5, 8, 0], [7, 6, 1], [4, 3, 2]], [[0, 2, 0], [5, 0, 4], [6, 7, 9]]]
         ]
 
         # 对应行或对应列或对应小九宫格的复杂度越低,在其内的未解格立即解出的可能性越大,通过参照复杂度来有选择性地解出未解格
@@ -78,7 +80,7 @@ class square:
             [],  # 6
             [],  # 7
             [],  # 8
-            []   # 9
+            []  # 9
         ]
         # 记号,读取数独时会添加所有元素坐标,而此过程只需一次即可
         self.tag = 0
@@ -92,7 +94,8 @@ class square:
 
     # 查看数独副本,同时计算获取副本复杂度
     def ergodic(self):
-        self.completion_degree = copy.deepcopy(self.completion_degree_initial)  # 将复制数独初始复杂度列表,得到一个副本,因为每次都会重新计算复杂度,故不能在原有列表中
+        self.completion_degree = copy.deepcopy(
+            self.completion_degree_initial)  # 将复制数独初始复杂度列表,得到一个副本,因为每次都会重新计算复杂度,故不能在原有列表中
         # 继续操作
         horizontal = 0  # 大九宫格<橫>
         vertical = 0  # 大九宫格<竖>
@@ -106,11 +109,12 @@ class square:
                     while ver < 3:
                         print(self.unit[horizontal][vertical][hor][ver], end="     ")
                         if self.tag == 0:
-                            self.coordinate[self.unit[horizontal][vertical][hor][ver]].append([horizontal, vertical, hor, ver])
+                            self.coordinate[self.unit[horizontal][vertical][hor][ver]].append(
+                                [horizontal, vertical, hor, ver])
                         if self.unit[horizontal][vertical][hor][ver] != 0:
-                            self.completion_degree[0][horizontal*3+hor] -= 1       # 横列复杂度减 1
-                            self.completion_degree[1][vertical*3+ver] -= 1           # 竖列复杂度减 1
-                            self.completion_degree[2][horizontal*3+vertical] -= 1  # 小九宫格复杂度减 1
+                            self.completion_degree[0][horizontal * 3 + hor] -= 1  # 横列复杂度减 1
+                            self.completion_degree[1][vertical * 3 + ver] -= 1  # 竖列复杂度减 1
+                            self.completion_degree[2][horizontal * 3 + vertical] -= 1  # 小九宫格复杂度减 1
                         ver += 1
                     if vertical < 2:
                         print("   |   ", end=" ")
@@ -148,7 +152,7 @@ class square:
                 for list3 in list2:
                     if sign1 == 1:
                         print("[", end="")
-                    print("{}".format(list3+1), end="")
+                    print("{}".format(list3 + 1), end="")
                     sign1 += 1
                     if sign1 == 5:
                         print("]", end="")
@@ -171,7 +175,7 @@ class square:
         ver = 0
         while horizontal < 3:
             while hor < 3:
-                line = horizontal*3+hor+1
+                line = horizontal * 3 + hor + 1
                 arr = get_a_set_of_data(line)
                 sign = 0
                 while vertical < 3:
@@ -196,6 +200,7 @@ class square:
      1 --- 竖列
      2 --- 小九宫格
     """
+
     def update_completion_degree(self):
         self.min_completion_degree = 9  # 最小复杂度置 0
         self.max_completion_degree = 0  # 最大复杂度置 0
@@ -210,11 +215,11 @@ class square:
         print("最大复杂度:%d" % self.max_completion_degree)
         print("最小复杂度:%d" % self.min_completion_degree)
         if self.min_completion_degree_trait == 0:
-            print("最小复杂度所在范围: 在第 %d 行" % (self.min_completion_degree_place+1))
+            print("最小复杂度所在范围: 在第 %d 行" % (self.min_completion_degree_place + 1))
         elif self.min_completion_degree_trait == 1:
-            print("最小复杂度所在范围: 在第 %d 列 " % (self.min_completion_degree_place+1))
+            print("最小复杂度所在范围: 在第 %d 列 " % (self.min_completion_degree_place + 1))
         elif self.min_completion_degree_trait == 2:
-            print("最小复杂度所在范围: 在第 %d 小九宫格 " % (self.min_completion_degree_place+1))
+            print("最小复杂度所在范围: 在第 %d 小九宫格 " % (self.min_completion_degree_place + 1))
         if self.min_completion_degree == 1:  # 若存在复杂度为 1 的情况立即填补
             self.only_one(self.min_completion_degree_trait, self.min_completion_degree_place)
 
@@ -224,6 +229,7 @@ class square:
     添加:获取空格在数独中的"位置",直接在坐标对应的子列表中添加"位置"即可 list.append(obj)
     删除:获取空格填补后的值以及在数独中的"位置",通过值确定坐标中对应子列表,再通过"位置"找到对应的下标,通过下标进行删除 del list[空格的值][下标]
     """
+
     def update_coordinate(self, value, horizontal, vertical, hor, ver):
         # 删除
         sign = 0
@@ -252,9 +258,9 @@ class square:
         li = list(range(10))
         flag = 0
         if trait == 0:
-            horizontal = place//3  # 获取复杂度为 1 的空格所在的大行
-            hor = place - horizontal*3  # 获取复杂度为 1 的空格所在的小行
-            print("检测到第 {} 行存在复杂度为1的空格,它在第 {} 大行第 {} 小行,".format(place+1, horizontal+1, hor+1))
+            horizontal = place // 3  # 获取复杂度为 1 的空格所在的大行
+            hor = place - horizontal * 3  # 获取复杂度为 1 的空格所在的小行
+            print("检测到第 {} 行存在复杂度为1的空格,它在第 {} 大行第 {} 小行,".format(place + 1, horizontal + 1, hor + 1))
             while vertical < 3:
                 while ver < 3:
                     if self.unit[horizontal][vertical][hor][ver] == 0:  # 得到复杂度为 1 的空格的具体位置
@@ -269,9 +275,9 @@ class square:
             self.unit[horizontal][vertical_temp][hor][ver_temp] = max(li)  # 将列表内唯一的值填入待填空格
             self.update_coordinate(max(li), horizontal, vertical_temp, hor, ver_temp)  # 更新与修改相关元素坐标
         elif trait == 1:
-            vertical = place//3  # 获取复杂度为 1 的空格所在的大列
-            ver = place - vertical*3  # 获取复杂度为 1 的空格所在的大列
-            print("检测到第 {} 列存在复杂度为1的空格,它在第 {} 大列第 {} 小列,".format(place+1, vertical+1, ver+1))
+            vertical = place // 3  # 获取复杂度为 1 的空格所在的大列
+            ver = place - vertical * 3  # 获取复杂度为 1 的空格所在的大列
+            print("检测到第 {} 列存在复杂度为1的空格,它在第 {} 大列第 {} 小列,".format(place + 1, vertical + 1, ver + 1))
             while horizontal < 3:
                 while hor < 3:
                     if self.unit[horizontal][vertical][hor][ver] == 0:  # 得到复杂度为 1 的空格的具体位置
@@ -286,9 +292,9 @@ class square:
             self.unit[horizontal_temp][vertical][hor_temp][ver] = max(li)  # 将列表内唯一的值填入待填空格
             self.update_coordinate(max(li), horizontal_temp, vertical, hor_temp, ver)  # 更新与修改相关元素坐标
         elif trait == 2:
-            horizontal = place//3  # 获取复杂度为 1 的空格所在的小九宫格
-            vertical = place - horizontal*3  # 获取复杂度为 1 的空格所在的小九宫格
-            print("检测到第 {} 小九宫格存在复杂度为1的空格,它在第 {} 大行第 {} 大列,".format(place+1, horizontal+1, vertical+1))
+            horizontal = place // 3  # 获取复杂度为 1 的空格所在的小九宫格
+            vertical = place - horizontal * 3  # 获取复杂度为 1 的空格所在的小九宫格
+            print("检测到第 {} 小九宫格存在复杂度为1的空格,它在第 {} 大行第 {} 大列,".format(place + 1, horizontal + 1, vertical + 1))
             while hor < 3:
                 while ver < 3:
                     if self.unit[horizontal][vertical][hor][ver] == 0:  # 得到复杂度为 1 的空格的具体位置
@@ -312,16 +318,18 @@ class square:
      A:复杂度之和越低并不意味着易解,相反复杂度之和为19(横列[1,2]:7,竖列[3,4]:7,小九宫格[5,6,7,8]:5)存在唯一解<假设>
        若只看空格所在行列以及九宫格是不够的,即使复杂度为27也有可能将其解出,本方法不考虑此情况
     """
+
     def three_dimensional(self):
         for num in range(10):
             for lis in self.coordinate[num]:  # 从值为 0-9 的依次遍历,每次获取对应值的准确坐标
-    def main():
+                print(1)
+
+def main():
     # 前期
     squ = square()  # 创建一个"数独方格"对象
     squ.ergodic()  # 查看数独副本,更新数独复杂度
     # squ.input_sud()  # 录入待解数独样本
     # squ.ergodic()  # 查看数独副本
-
 
     # 中期
 
